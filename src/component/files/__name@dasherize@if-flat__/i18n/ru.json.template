@@ -1,0 +1,5 @@
+{
+  "<%= camelize(name) %><%= classify(type) %>": {
+
+  }
+}

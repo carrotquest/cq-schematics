@@ -1,0 +1,12 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "extends": ["@schematics/angular"],
+  "schematics": {
+    "component": {
+      "aliases": ["c"],
+      "description": "Create files for i18n in Angular component.",
+      "factory": "./component",
+      "schema": "../node_modules/@schematics/angular/component/schema.json"
+    }
+  }
+}
