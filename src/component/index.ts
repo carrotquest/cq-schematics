@@ -1,38 +1,28 @@
-import {strings} from '@angular-devkit/core';
-import {apply, branchAndMerge, chain, externalSchematic, mergeWith, move, Rule, SchematicContext, template, Tree, url} from '@angular-devkit/schematics';
+import {basename, extname, normalize, strings} from '@angular-devkit/core';
+import {classify} from '@angular-devkit/core/src/utils/strings';
+import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
 import generateComponent from '@schematics/angular/component';
-import {parseName} from '@schematics/angular/utility/parse-name';
+import {buildRelativePath, findModuleFromOptions, MODULE_EXT} from '@schematics/angular/utility/find-module';
 import {Schema} from './schema';
 
-
-
-// You don't have to export the function as default. You can also have more than one rule factory
-// per file.
-export default function(_options: any): Rule {
+export default function(_options: Schema): Rule {
   return (tree: Tree, _context: SchematicContext) => {
+    const modulePath = findModuleFromOptions(tree, _options);
+
+    if (modulePath) {
+      // таким же образом строятся пути в @schematics/angular, поэтому не удивляйтесь
+      const specFilePath = normalize(
+        `/${_options.path}/` +
+        (_options.flat ? '' : strings.dasherize(_options.name) + '/') +
+        strings.dasherize(_options.name) +
+        '.spec.ts',
+      );
+
+      const moduleFileName = basename(modulePath).split(MODULE_EXT)[0];
+      _options.moduleName = classify(`${moduleFileName}Module`);
+      _options.moduleRelativePath = buildRelativePath(specFilePath, modulePath).split(extname(modulePath))[0];
+    }
+
     return generateComponent(_options);
   }
 }
-/*export default function(_options: any): Rule {
-  return (tree: Tree, _context: SchematicContext) => {
-    const parsedPath = parseName(_options.path as string, _options.name);
-
-    const templateSource = apply(url('./files'), [
-      template({
-        ...strings,
-        'if-flat': (s: string) => (_options.flat ? '' : s),
-        ..._options
-      }),
-      move(parsedPath.path)
-    ]);
-
-    return chain([
-        externalSchematic('@schematics/angular', 'component', _options),
-        (host, _context) => {
-          _context.logger.warn(Object.entries(_options).join(' | '));
-          return host;
-        }
-      ]
-    );
-  };
-}*/
