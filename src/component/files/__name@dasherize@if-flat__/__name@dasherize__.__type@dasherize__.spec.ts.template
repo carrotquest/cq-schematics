@@ -1,7 +1,7 @@
 import {MockBuilder, MockedComponentFixture, MockRender} from 'ng-mocks';
 import {TranslocoModule} from '@ngneat/transloco';
-import {<%= classify(name) %><%= classify(type) %>} from './<%= dasherize(name) %><%= type ? '.' + dasherize(type): '' %>';
-import {<%= classify(moduleName) %>} from '<%= moduleRelativePath %>';
+import {<%= classify(name) %><%= classify(type) %>} from './<%= dasherize(name) %><%= type ? '.' + dasherize(type): '' %>';<% if(!skipImport) { %>
+import {<%= classify(moduleName) %>} from '<%= moduleRelativePath %>';<% } %>
 
 /** Тип входных параметров компонента */
 type ComponentParams = {};
@@ -11,7 +11,8 @@ fdescribe('<%= classify(name) %><%= classify(type) %>', () => {
   let componentParams: ComponentParams;
 
   beforeEach(async () => {
-    await MockBuilder(<%= classify(name) %><%= classify(type) %>, <%= classify(moduleName) %>)
+    <% if(!skipImport) { %>await MockBuilder(<%= classify(name) %><%= classify(type) %>, <%= classify(moduleName) %>)
+    <% } else { %>await MockBuilder(<%= classify(name) %><%= classify(type) %>, null)<% } %>
       .keep(TranslocoModule);
 
     componentParams = {};

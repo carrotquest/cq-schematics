@@ -4,10 +4,10 @@ export interface Schema extends ComponentSchema {
   /**
    * Название модуля, в declarations которого добавляется компонент
    */
-  moduleName: string,
+  moduleName?: string,
 
   /**
    * Относительный путь от компонента до модуля
    */
-  moduleRelativePath: string
+  moduleRelativePath?: string
 }

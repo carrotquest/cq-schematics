@@ -3,9 +3,9 @@ import { Component, OnInit<% if(!!viewEncapsulation) { %>, ViewEncapsulation<% }
 @Component({<% if(!skipSelector) {%>
   selector: '<%= selector %>',<%}%><% if(inlineTemplate) { %>
   template: `
-    <p>
-      <%= dasherize(name) %> works!
-    </p>
+    <ng-container *transloco="let t">
+      <div><%= dasherize(name) %> works!</div>
+    </ng-container>
   `,<% } else { %>
   templateUrl: './<%= dasherize(name) %><%= type ? '.' + dasherize(type): '' %>.html',<% } if(inlineStyle) { %>
   styles: [<% if(displayBlock){ %>
