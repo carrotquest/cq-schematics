@@ -11,3 +11,6 @@
 *.iml
 jsconfig.json
 .vscode/
+
+# Misc
+yarn-error.log*
