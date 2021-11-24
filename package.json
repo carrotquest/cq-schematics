@@ -1,7 +1,7 @@
 {
-  "name": "cq-schematics",
-  "version": "1.0.2",
-  "description": "A blank schematics",
+  "name": "@carrot-quest/schematics",
+  "version": "1.0.0",
+  "description": "Schematics for Carrot quest Angular projects",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "watch": "tsc -p tsconfig.json --watch",
@@ -10,8 +10,13 @@
   "keywords": [
     "schematics"
   ],
-  "author": "",
+  "author": "Carrot quest",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/carrotquest/cq-schematics"
+  },
+  "homepage": "https://www.carrotquest.io/",
   "schematics": "./src/collection.json",
   "dependencies": {
     "@angular-devkit/core": "^12.2.13",
