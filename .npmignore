@@ -2,3 +2,12 @@
 # Ignores TypeScript files, but keeps definitions.
 *.ts
 !*.d.ts
+
+# Ignores .map files.
+*.map
+
+# IDEs
+.idea/
+*.iml
+jsconfig.json
+.vscode/
