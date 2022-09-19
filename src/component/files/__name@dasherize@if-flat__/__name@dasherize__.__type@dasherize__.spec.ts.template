@@ -6,7 +6,7 @@ import {<%= classify(moduleName) %>} from '<%= moduleRelativePath %>';<% } %>
 /** Тип входных параметров компонента */
 type ComponentParams = {};
 
-fdescribe('<%= classify(name) %><%= classify(type) %>', () => {
+describe('<%= classify(name) %><%= classify(type) %>', () => {
   let fixture: MockedComponentFixture<<%= classify(name) %><%= classify(type) %>, ComponentParams>;
   let componentParams: ComponentParams;
 
