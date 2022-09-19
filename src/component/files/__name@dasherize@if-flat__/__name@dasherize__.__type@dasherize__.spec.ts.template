@@ -6,41 +6,23 @@ import {<%= classify(moduleName) %>} from '<%= moduleRelativePath %>';<% } %>
 /** Тип входных параметров компонента */
 type ComponentParams = {};
 
-fdescribe('<%= classify(name) %><%= classify(type) %>', () => {
+describe('<%= classify(name) %><%= classify(type) %>', () => {
   let fixture: MockedComponentFixture<<%= classify(name) %><%= classify(type) %>, ComponentParams>;
   let componentParams: ComponentParams;
 
-  beforeEach(async () => {
-    <% if(!skipImport) { %>await MockBuilder(<%= classify(name) %><%= classify(type) %>, <%= classify(moduleName) %>)
-    <% } else { %>await MockBuilder(<%= classify(name) %><%= classify(type) %>, null)<% } %>
+  beforeEach(async () => {<% if(!skipImport) { %>
+    await MockBuilder(<%= classify(name) %><%= classify(type) %>, <%= classify(moduleName) %>) <% } else { %>
+    await MockBuilder(<%= classify(name) %><%= classify(type) %>, null)<% } %>
       .keep(TranslocoModule);
 
     componentParams = {};
-    fixture = MockRender(<%= classify(name) %><%= classify(type) %>, componentParams);
+    fixture = MockRender(<%= classify(name) %><%= classify(type) %>, componentParams, {
+      detectChanges: false,
+    });
   });
 
   it('создаётся', () => {
     expect(fixture.point.componentInstance)
       .toBeTruthy();
-  });
-
-  describe('через геттеры:', () => {
-
-  });
-
-  describe('при инициализации:', () => {
-
-  });
-
-  describe('через UI:', () => {
-
-  });
-
-  describe('через функции:', () => {
-
-  });
-
-  describe('трекает:', () => {
-
   });
 });

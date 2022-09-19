@@ -1,7 +1,7 @@
 import {basename, extname, normalize, strings} from '@angular-devkit/core';
 import {classify} from '@angular-devkit/core/src/utils/strings';
 import {Rule, SchematicContext, Tree} from '@angular-devkit/schematics';
-import generateComponent from '@schematics/angular/component';
+import generateComponent from '@schematics/angular/component/index';
 import {buildRelativePath, findModuleFromOptions, MODULE_EXT} from '@schematics/angular/utility/find-module';
 import {Schema} from './schema';
 
