@@ -23,24 +23,4 @@ fdescribe('<%= classify(name) %><%= classify(type) %>', () => {
     expect(fixture.point.componentInstance)
       .toBeTruthy();
   });
-
-  describe('через геттеры:', () => {
-
   });
-
-  describe('при инициализации:', () => {
-
-  });
-
-  describe('через UI:', () => {
-
-  });
-
-  describe('через функции:', () => {
-
-  });
-
-  describe('трекает:', () => {
-
-  });
-});
