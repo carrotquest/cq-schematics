@@ -1,3 +1,3 @@
-<ng-container *transloco="let t">
+<ng-container *transloco="let t; read: '<%= camelize(name) %><%= classify(type) %>'">
   <div><%= dasherize(name) %> works!</div>
 </ng-container>
