@@ -16,7 +16,9 @@ fdescribe('<%= classify(name) %><%= classify(type) %>', () => {
       .keep(TranslocoModule);
 
     componentParams = {};
-    fixture = MockRender(<%= classify(name) %><%= classify(type) %>, componentParams);
+    fixture = MockRender(<%= classify(name) %><%= classify(type) %>, componentParams, {
+      detectChanges: false,
+    });
   });
 
   it('создаётся', () => {
