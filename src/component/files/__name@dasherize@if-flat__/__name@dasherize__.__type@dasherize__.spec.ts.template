@@ -1,7 +1,8 @@
-import {MockBuilder, MockedComponentFixture, MockRender} from 'ng-mocks';
-import {TranslocoModule} from '@ngneat/transloco';
-import {<%= classify(name) %><%= classify(type) %>} from './<%= dasherize(name) %><%= type ? '.' + dasherize(type): '' %>';<% if(!skipImport) { %>
-import {<%= classify(moduleName) %>} from '<%= moduleRelativePath %>';<% } %>
+import { TranslocoModule } from '@jsverse/transloco';
+import { MockBuilder, MockedComponentFixture, MockRender } from 'ng-mocks';
+
+import { <%= classify(name) %><%= classify(type) %> } from './<%= dasherize(name) %><%= type ? '.' + dasherize(type): '' %>';<% if(!skipImport) { %>
+import { <%= classify(moduleName) %> } from '<%= moduleRelativePath %>';<% } %>
 
 /** Тип входных параметров компонента */
 type ComponentParams = {};
